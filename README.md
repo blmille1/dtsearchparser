@@ -33,34 +33,39 @@ Setup:
 	(NOTE: My TFS Workspace is located at D:\Millersoft\TFS, so adjust accordingly)
 	CLASSPATH: .;C:\Antlr4\antlr-4.5.3-complete.jar;C:\Antlr4
 	PATH: C:\Antlr4;C:\ant-1.9.7\bin;C:\Program Files\Java\jdk-13.0.1\bin\
+3. You will need to reference the Solr 6.1.0 source in order to build the parser.  I'm not exactly sure how you do that at this time, but I was able to access an archived version of solr here: http://archive.apache.org/dist/lucene/solr/6.1.0/
 3. Build
 
 ## Test Solr Run
-	cd Solr (this is the solr source directory.  See Solr Version.txt in this directory to know which version it is)
-	cd solr
-	ant server
-	bin\solr.cmd start -e techproducts -noprompt
-	open http://localhost:8983/solr in a web browser
-	kick the tires
-	bin\solr.cmd stop -all
+Change your directory to the Solr source directory.
+
+`cd solr`
+
+`ant server`
+
+`bin\solr.cmd start -e techproducts -noprompt`
+
+Open http://localhost:8983/solr in a web browser and kick the tires.
+
+`bin\solr.cmd stop -all`
 
 ## Install the dtSearch, etc. Solr Plugins
-	Use for reference: http://coding-art.blogspot.com/2016/05/writing-custom-solr-query-parser-for.html
-	All you should need to do is export the JAR for the MillersoftSolrPlugins, copy the JAR to the right folders, and edit the solrconfig.xml, then start solr.
-	Put JAR file here (if you're using the techproducts example): Solr\solr\example\techproducts\solr\lib
-	solrconfig.xml: Edit the one located here: Solr\solr\example\techproducts\solr\techproducts\conf\solrconfig.xml
-	For the solrconfig.xml:
-		To register the dtSearch parser:
-			<queryParser name="dtsearch" class="com.millersoft.solr.parsers.dtsearch.DtSearchQParserPlugin"/>
-		To make the default search parser for /select
-			Find <requestHandler name="/select"...
-			Locate the <lst name="defaults"...
-			Add the following:
-				<str name="defType">dtsearch</str>
-	If you want the default query parser to be dtSearch:
-		in the same solrconfig.xml
+Use for reference: http://coding-art.blogspot.com/2016/05/writing-custom-solr-query-parser-for.html
 
-	NOTE: if you want to install for SolrCore, follow the instructions at the link above. :D
+All you should need to do is export the JAR for the MillersoftSolrPlugins, copy the JAR to the right folders, and edit the solrconfig.xml, then start solr.
+
+Put JAR file here (if you're using the techproducts example): `Solr\solr\example\techproducts\solr\lib\solrconfig.xml`: Edit the one located here: `Solr\solr\example\techproducts\solr\techproducts\conf\solrconfig.xml`.
+
+For the solrconfig.xml:
+- To register the dtSearch parser:
+	`<queryParser name="dtsearch" class="com.millersoft.solr.parsers.dtsearch.DtSearchQParserPlugin"/>`
+- To make the default search parser for `/select`
+	- Find `<requestHandler name="/select"`...
+	- Locate the `<lst name="defaults"`...
+	- Add the following:
+		`<str name="defType">dtsearch</str>`
+
+NOTE: if you want to install for SolrCore, follow the instructions at the link above. :D
 
 FYI:
 * Antlr4 compiles .g4 files into some target language, Java by default, which is what we are compiling into now for use in Solr.
