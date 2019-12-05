@@ -1,0 +1,9 @@
+6.1.0
+
+NOTE: To get this to compile from source in Eclipse, I had to do the following:
+ant clean clean-eclipse clean-jars eclipse
+
+------ DEPRECATED LIST BELOW (got switched out with the version at the top) ------
+
+
+6.0.1

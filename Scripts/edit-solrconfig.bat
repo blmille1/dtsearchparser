@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Notepad++\notepad++.exe" ..\Solr\solr\example\techproducts\solr\techproducts\conf\solrconfig.xml

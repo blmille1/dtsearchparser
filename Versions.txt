@@ -1,0 +1,10 @@
+Solr:      6.1.0
+ZooKeeper: 3.4.8
+
+NOTE: To get solr 6.1.0 to compile from source in Eclipse, I had to do the following:
+ant clean clean-eclipse clean-jars eclipse
+
+------ DEPRECATED LIST BELOW (got switched out with the version at the top) ------
+
+
+6.0.1

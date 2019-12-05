@@ -1,0 +1,1 @@
+(HEADLINE CONTAINS ((Sullivan pre/2 Worcester) w/10 (law OR lawyer* OR legal OR attorney* OR LLP))) OR (xfirstword w/100 ((Sullivan pre/2 Worcester) w/10 (law OR lawyer* OR legal OR attorney* OR LLP)))

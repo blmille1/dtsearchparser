@@ -1,0 +1,28 @@
+This is how I set up a production-like environment:
+set up three zk instances.
+
+F:\Millersoft\TFS\SolrSystem\Trunk\Source\Solr\solr\server\scripts\cloud-scripts\zkcli.bat -cmd upconfig -z search1:2181,search2:2181,search3:2181 -confname MyTestWebsite -confdir ..\Configs\MyTestWebsite
+
+Went to a zk instance (search3 in this case) to check something out:
+.\bin\zkCli.cmd -server search1
+
+ls /configs
+ls /configs/MyTestWebsite
+
+I noticed that all of that stuff was where it needed to be.
+
+Created solr-6-cores on each machine under c:\apache
+
+
+
+
+
+C:\apache\solr-6.1.0\bin\solr start -f -h search3 -c -p 9000 -z "search1:2181,search2:2181,search3:2181" -m 2g -s C:\apache\solr-6-cores -a "-DzkClientTimeout 20000"
+
+
+
+http://search3:9000/solr/admin/collections?action=CREATE&name=MyTestWebsite&numShards=2&replicationFactor=2&maxShardsPerNode=2&collection.configName=MyTestWebsite
+
+
+
+
