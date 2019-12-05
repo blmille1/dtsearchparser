@@ -49,7 +49,7 @@ Open http://localhost:8983/solr in a web browser and kick the tires.
 
 `bin\solr.cmd stop -all`
 
-## Install the dtSearch Solr Plugins
+## Install the dtSearch Solr Plugin
 Use for reference: http://coding-art.blogspot.com/2016/05/writing-custom-solr-query-parser-for.html
 
 All you should need to do is export the JAR for the MillersoftSolrPlugins, copy the JAR to the right folders, and edit the solrconfig.xml, then start solr.
