@@ -17,3 +17,4 @@ Also, don't be shy of suggesting updates of your own.
 
 # Where's the code I care about?
 The source for the parser is in Plugins/.
+It was designed to work with Solr 6.1.0.  See Versions.txt for more information.
